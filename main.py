@@ -15,7 +15,7 @@ def situacion(catils):
             reparticiones.append([restante, sobrante])
         else:
             # En caso de que no sobre lo esperado, se retorna un array vacío simbolizando que los catils no son como la
-            # situación inicial.
+            # situación inicial y no van a ser anexados al resultado.
             return []
     return reparticiones
 
