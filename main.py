@@ -3,34 +3,31 @@ def repartir(catils):
 
 
 def situacion(catils):
-    # Situación inicial
+    # Situación inicial, en donde quedan las monedas iniciales y no sobra ninguna
     reparticiones = [[catils, 0]]
 
-    # Repartición de los 3 marineros, en las 3 debe sobrar 1
-    for i in range(3):
-        reparticion = repartir(catils)
-        catils = reparticion[0]
-        if reparticion[1] == 1:
-            reparticiones.append(reparticion)
+    # Repartición de los 3 marineros y el contador, en las 3 primeras veces debe sobrar 1 y en la del contador 2
+    sobras_esperadas = [1, 1, 1, 2]
+    for sobra_esperada in sobras_esperadas:
+        restante, sobrante = repartir(catils)
+        catils = restante
+        if sobrante == sobra_esperada:
+            reparticiones.append([restante, sobrante])
         else:
+            # En caso de que no sobre lo esperado, se retorna un array vacío simbolizando que los catils no son como la
+            # situación inicial.
             return []
-
-    # Repartición del tesorero, deben sobrar 2
-    reparticion = repartir(catils)
-    if reparticion[1] == 2:
-        reparticiones.append(reparticion)
-    else:
-        return []
-
     return reparticiones
 
 
 if __name__ == '__main__':
-    results = []
+    resultados = []
     n = 100001
-    while len(results) < 10:
-        if situacion(n):
-            results.append(situacion(n))
+    while len(resultados) < 10:
+        intento = situacion(n)
+        if intento:
+            resultados.append(intento)
         n += 1
 
-    print(results)
+    for resultado in resultados:
+        print(resultado)
