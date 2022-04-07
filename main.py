@@ -4,22 +4,22 @@ def repartir(catils):
 
 
 def situacion(catils):
-    reparticiones = []
+    registro = []
     # Repartición de los 3 marineros y el almojarife, siempre debe sobrar 1
     sobras_esperadas = [1]*4
     for sobra_esperada in sobras_esperadas:
         reparto, sobrante, restante = repartir(catils)
         if sobrante == sobra_esperada:
-            reparticiones.append([catils, 3, reparto, sobrante, restante])
+            registro.append([catils, 3, reparto, sobrante, restante])
         else:
-            # En caso de que no sobre lo esperado, se retorna un array vacío simbolizando que los catils no son como la
-            # situación inicial y no van a ser anexados al resultado.
+            # En caso de que no sobre lo esperado, se retorna un array vacío simbolizando que el registro no es válido,
+            # ya que no es como en la situación inicial y no van a ser anexados al resultado.
             return []
         catils = restante
 
     # No le queda nada al almojarife
-    reparticiones[-1][-1] = 0
-    return reparticiones
+    registro[-1][-1] = 0
+    return registro
 
 
 if __name__ == '__main__':
