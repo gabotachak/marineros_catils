@@ -51,9 +51,13 @@ Elabore un programa en Python que encuentre 10 números mayores que 100000 que c
 
 **Condición Obligatoria:** desarrollarlo por el método de ensayo y error (nada de ecuaciones matemáticas). El programa debe reflejar obligatoriamente las 4 reparticiones con la instrucción “if” (se deben ejecutar 4 “if” para las cuatro reparticiones).
 
-Restricciones:
+#### Restricciones:
 
 1. Solo se puede usar listas para almacenar, tanto las cantidades que se lleva cada marinero en las reparticiones, como la cantidad de monedas que cumple la condición del enunciado
 2. Solo hasta que se obtengan los resultados, estos deben presentarse en forma matricial antes de finalizar el programa
 
 Solución: [Notebook](marineros_catils.ipynb)
+
+#### Diagrama de flujo:
+
+![Diagrama](diagram.png)
