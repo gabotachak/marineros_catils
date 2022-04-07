@@ -6,7 +6,7 @@ def repartir(catils):
 def situacion(catils):
     registro = []
     # Repartición de los 3 marineros y el almojarife, siempre debe sobrar 1
-    sobras_esperadas = [1]*4
+    sobras_esperadas = [1] * 4
     for sobra_esperada in sobras_esperadas:
         reparto, sobrante, restante = repartir(catils)
         if sobrante == sobra_esperada:
@@ -34,17 +34,17 @@ if __name__ == '__main__':
     for n, resultado in resultados.items():
         r = []
         print(f"Monedas totales: {n}")
-        padding = "{:<20} {:<15} {:<10} {:<10} {:<20}"
-        print(padding.format("Monedas en la caja:", "Dividas entre:", "Da:", "Residuo:", "Monedas restantes:"))
+        padding = "{:<20} {:<17} {:<10} {:<10} {:<20}"
+        print(padding.format("Monedas en la caja:", "Divididas entre:", "Da:", "Residuo:", "Monedas restantes:"))
 
         for monedas, divisor, da, residuo, restantes in resultado:
             r.append(da)
             print(padding.format(monedas, divisor, da, residuo, restantes))
         print()
 
-        print(f"Marinero # 1 {r[0]}+{r[3]} = {r[0]+r[3]}")
-        print(f"Marinero # 2 {r[1]}+{r[3]} = {r[1]+r[3]}")
-        print(f"Marinero # 3 {r[2]}+{r[3]} = {r[2]+r[3]}")
+        print(f"Marinero # 1 {r[0]}+{r[3]} = {r[0] + r[3]}")
+        print(f"Marinero # 2 {r[1]}+{r[3]} = {r[1] + r[3]}")
+        print(f"Marinero # 3 {r[2]}+{r[3]} = {r[2] + r[3]}")
         print(f"Almojarife = 1")
         print(f"Tiradas al mar = 3")
         print(f"Total = {n}")
