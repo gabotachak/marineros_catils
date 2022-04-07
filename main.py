@@ -1,5 +1,5 @@
 def repartir(catils):
-    # Retorna la división
+    # Retorna la división, el residuo y lo que queda
     return [int(catils / 3), catils % 3, catils - int(catils / 3) - 1]
 
 
