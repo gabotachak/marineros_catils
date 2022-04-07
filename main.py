@@ -1,33 +1,51 @@
 def repartir(catils):
-    return [int(catils / 3), catils % 3]
+    # Retorna la división
+    return [int(catils / 3), catils % 3, catils - int(catils / 3) - 1]
 
 
 def situacion(catils):
-    # Situación inicial, en donde quedan las monedas iniciales y no sobra ninguna
-    reparticiones = [[catils, 0]]
-
-    # Repartición de los 3 marineros y el contador, en las 3 primeras veces debe sobrar 1 y en la del contador 2
-    sobras_esperadas = [1, 1, 1, 2]
+    reparticiones = []
+    # Repartición de los 3 marineros y el almojarife, siempre debe sobrar 1
+    sobras_esperadas = [1]*4
     for sobra_esperada in sobras_esperadas:
-        restante, sobrante = repartir(catils)
-        catils = restante
+        reparto, sobrante, restante = repartir(catils)
         if sobrante == sobra_esperada:
-            reparticiones.append([restante, sobrante])
+            reparticiones.append([catils, 3, reparto, sobrante, restante])
         else:
             # En caso de que no sobre lo esperado, se retorna un array vacío simbolizando que los catils no son como la
             # situación inicial y no van a ser anexados al resultado.
             return []
+        catils = restante
+
+    # No le queda nada al almojarife
+    reparticiones[-1][-1] = 0
     return reparticiones
 
 
 if __name__ == '__main__':
-    resultados = []
+    resultados = {}
     n = 100001
     while len(resultados) < 10:
         intento = situacion(n)
         if intento:
-            resultados.append(intento)
+            resultados[n] = intento
         n += 1
 
-    for resultado in resultados:
-        print(resultado)
+    for n, resultado in resultados.items():
+        r = []
+        print(f"Monedas totales: {n}")
+        padding = "{:<20} {:<15} {:<10} {:<10} {:<20}"
+        print(padding.format("Monedas en la caja:", "Dividas entre:", "Da:", "Residuo:", "Monedas restantes:"))
+
+        for monedas, divisor, da, residuo, restantes in resultado:
+            r.append(da)
+            print(padding.format(monedas, divisor, da, residuo, restantes))
+        print()
+
+        print(f"Marinero # 1 {r[0]}+{r[3]} = {r[0]+r[3]}")
+        print(f"Marinero # 2 {r[1]}+{r[3]} = {r[1]+r[3]}")
+        print(f"Marinero # 3 {r[2]}+{r[3]} = {r[2]+r[3]}")
+        print(f"Almojarife = 1")
+        print(f"Tiradas al mar = 3")
+        print(f"Total = {n}")
+        print()
